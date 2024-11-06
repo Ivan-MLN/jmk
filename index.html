@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Login dengan Video</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 20px;
+      background-color: #f0f0f0;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 5px;
+    }
+
+    input {
+      margin-bottom: 15px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .video-section {
+      display: none; /* Hidden initially */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Form Login -->
+  <div class="login-container">
+    <form id="loginForm" onsubmit="showVideo(event)">
+      <label for="username">ke siapa?</label>
+      <input type="text" id="username" required>
+
+      <label for="password">pesan</label>
+      <input type="text" id="password" required>
+
+      <button type="submit">kirim</button>
+    </form>
+  </div>
+
+  <!-- Video Section -->
+  <div id="videoSection" class="video-section">
+    <video id="video" autoplay loop>
+      <source src="https://forms-jump.vercel.app/3aryblir.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <script>
+    function showVideo(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Hide the login form
+      document.querySelector('.login-container').style.display = 'none';
+
+      // Show the video section
+      document.getElementById('videoSection').style.display = 'flex';
+
+      // Play the video
+      const video = document.getElementById('video');
+      video.play();
+    }
+  </script>
+
+</body>
+</html>
